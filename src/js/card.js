@@ -1,4 +1,7 @@
-class Card {
+export default class Card {
+  constructor(placesList) {
+    this.placesList = placesList;
+  }
   like(event) {
     if (event.target.classList.contains("place-card__like-icon"))
       event.target.classList.toggle("place-card__like-icon_liked");
@@ -6,7 +9,7 @@ class Card {
 
   remove(event) {
     if (event.target.classList.contains("place-card__delete-icon"))
-      placesList.removeChild(event.target.closest(".place-card"));
+      this.placesList.removeChild(event.target.closest(".place-card"));
   }
 
   create(link, name) {

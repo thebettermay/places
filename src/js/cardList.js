@@ -1,17 +1,17 @@
-class CardList {
-  constructor(container, api, card, popup, array) {
+export default class CardList {
+  constructor(container, api, card, popup, array, form) {
     this.container = container;
     this.api = api;
     this.card = card;
     this.popup = popup;
     this.array = array;
+    this.form = form;
   }
   addCard(event) {
     const template = this.card.create(
-      form.elements.link.value,
-      form.elements.name.value
+      this.form.elements.link.value,
+      this.form.elements.name.value
     );
-
     this.container.insertAdjacentHTML("beforeend", template);
     event.preventDefault();
 

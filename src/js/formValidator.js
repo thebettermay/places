@@ -1,6 +1,7 @@
-class FormValidator {
-  constructor(element) {
+export default class FormValidator {
+  constructor(element, errors) {
     this.element = element;
+    this.errors = errors;
   }
   setSubmitButtonState(event) {
     const popupWindow = event.target.closest(".popup");
@@ -22,15 +23,15 @@ class FormValidator {
     const errorLabel = event.target.nextElementSibling;
     const showError = () => errorLabel.classList.add("popup__error_active");
     if (event.target.validity.valueMissing) {
-      errorText = errors.validationEmpty;
+      errorText = this.errors.validationEmpty;
       showError();
     }
     if (event.target.validity.tooShort) {
-      errorText = errors.validationLength;
+      errorText = this.errors.validationLength;
       showError();
     }
     if (event.target.name === "link" && event.target.validity.typeMismatch) {
-      errorText = errors.validationLink;
+      errorText = this.errors.validationLink;
       showError();
     }
     if (event.target.validity.valid) {
@@ -40,6 +41,8 @@ class FormValidator {
   }
   setEventListeners() {
     this.element.addEventListener("input", this.setSubmitButtonState);
-    this.element.addEventListener("input", this.checkInputValidity);
+    this.element.addEventListener("input", event =>
+      this.checkInputValidity(event)
+    );
   }
 }

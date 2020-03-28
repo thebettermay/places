@@ -1,3 +1,15 @@
+import "../pages/index.css";
+import Api from "./api";
+import Card from "./card";
+import CardList from "./cardList";
+import FormValidator from "./formValidator";
+import Popup from "./popup";
+import UserInfo from "./userInfo";
+
+const serverUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://praktikum.tk/"
+    : "https://praktikum.tk/";
 const placesList = document.querySelector(".places-list");
 const popupWindowCard = document.querySelector(".popup-add-card");
 const popupWindowEdit = document.querySelector(".popup__edit");
@@ -10,15 +22,15 @@ const errors = {
 };
 const formEdit = document.forms.edit;
 const api = new Api(
-  "https://praktikum.tk/",
+  serverUrl,
   "cohort8/",
   "users/me",
   "cards",
   "136b7cf3-dc68-4441-b443-8eb7e7bc061c"
 );
 
-const formValidator = new FormValidator(form);
-const formEditValidator = new FormValidator(formEdit);
+const formValidator = new FormValidator(form, errors);
+const formEditValidator = new FormValidator(formEdit, errors);
 const popup = new Popup(
   popupWindowCard,
   popupWindowEdit,
@@ -28,21 +40,22 @@ const popup = new Popup(
   form
 );
 
-const card = new Card();
+const card = new Card(placesList);
 const cardListisng = new CardList(
   document.querySelector(".places-list"),
   api,
   card,
   popup,
-  []
+  [],
+  form
 );
 cardListisng.render();
 
 const userInfo = new UserInfo(api);
 
 placesList.addEventListener("click", card.like);
-placesList.addEventListener("click", card.remove);
-document.forms.new.addEventListener("submit", function (event) {
+placesList.addEventListener("click", event => card.remove(event));
+document.forms.new.addEventListener("submit", function(event) {
   event.preventDefault();
   cardListisng.addCard(event);
 });
@@ -58,7 +71,6 @@ popupWindowCard.addEventListener("click", popup.close);
 popupWindowCard.addEventListener("keydown", popup.close);
 popupWindowPic.addEventListener("click", popup.close);
 popupWindowPic.addEventListener("keydown", popup.close);
-
 
 /**
 * Здравствуйте.
