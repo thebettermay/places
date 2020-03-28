@@ -6,6 +6,10 @@ import FormValidator from "./formValidator";
 import Popup from "./popup";
 import UserInfo from "./userInfo";
 
+const serverUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://praktikum.tk/"
+    : "https://praktikum.tk/";
 const placesList = document.querySelector(".places-list");
 const popupWindowCard = document.querySelector(".popup-add-card");
 const popupWindowEdit = document.querySelector(".popup__edit");
@@ -18,7 +22,7 @@ const errors = {
 };
 const formEdit = document.forms.edit;
 const api = new Api(
-  "https://praktikum.tk/",
+  serverUrl,
   "cohort8/",
   "users/me",
   "cards",

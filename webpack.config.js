@@ -5,10 +5,7 @@ const WebpackMd5Hash = require("webpack-md5-hash");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const isDev = process.env.NODE_ENV === "development";
-serverUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://github.com/thebettermay/places.git"
-    : "https://github.com/thebettermay/places.git";
+
 module.exports = {
   entry: { main: "./src/js/index.js" },
   output: {
