@@ -17,8 +17,8 @@
 
 _HTML/CSS(flexbox, grid), Javascript (ES5/ES6), БЭМ, сборка Webpack_
 
-git clone https://github.com/thebettermay/webpack.gitgit branch - скачать репозиторий
-npm i webpack --save-dev - установить вебпак
-npm i webpack-cli --save-dev - установить интерфейс для вебпака
-npm run build - сборка проекта
+git clone https://github.com/thebettermay/webpack.gitgit branch - скачать репозиторий  
+npm i webpack --save-dev - установить вебпак  
+npm i webpack-cli --save-dev - установить интерфейс для вебпака  
+npm run build - сборка проекта  
 npm run dev - сборка на локальном сервере
