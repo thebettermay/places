@@ -19,4 +19,4 @@ _HTML/CSS(flexbox, grid), Javascript (ES5/ES6), БЭМ, сборка Webpack_
 
 ### Скачать репозиторий:
 
-\$ git clone https://github.com/thebettermay/webpack.git
+\$ git clone https://github.com/thebettermay/webpack.gitgit branch
